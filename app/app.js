@@ -1,5 +1,3 @@
-import * as data from "./data.js";
-
 // Función para mostrar los productos dependiendo su contenedor: mate, termo o bombilla
 function mostrarProductos(contenedor, productos) {
   const contenedorProductos = document.querySelector(contenedor);
@@ -147,34 +145,46 @@ function obtenerCarritoDelLocalStorage() {
   return carrito;
 }
 
-// Función para cargar los productos del localStorage al cargar la página
-function cargarProductosDelLocalStorage() {
+// Función para cargar los datos del carrito desde el localStorage al cargar la página
+function cargarCarritoDesdeLocalStorage() {
   const carritoItems = document.getElementById("carrito-items");
   const carrito = obtenerCarritoDelLocalStorage();
-  carritoItems.innerHTML = "";
-  carrito.forEach((producto) => {
+  carrito.forEach((item) => {
     const nuevoItem = document.createElement("div");
     nuevoItem.classList.add("cart-item");
-    nuevoItem.dataset.nombre = producto.nombre;
-    nuevoItem.dataset.precio = producto.precio;
-    nuevoItem.innerHTML = `<p>${producto.nombre} - $${producto.precio} x <span class="cantidad">${producto.cantidad}</span></p>
+    nuevoItem.dataset.nombre = item.nombre;
+    nuevoItem.dataset.precio = item.precio;
+    nuevoItem.innerHTML = `<p>${item.nombre} - $${item.precio} x <span class="cantidad">${item.cantidad}</span></p>
                            <button class="eliminar-item-btn">Eliminar</button>`;
     nuevoItem
       .querySelector(".eliminar-item-btn")
       .addEventListener("click", () => {
-        eliminarDelCarrito(producto.nombre);
+        eliminarDelCarrito(item.nombre);
       });
     carritoItems.appendChild(nuevoItem);
   });
 
-  // Mostrar el total después de cargar los productos del carrito desde el localStorage
   mostrarTotal();
 }
 
-// Llama a la función para cargar los productos del localStorage al cargar la página
-window.addEventListener("load", cargarProductosDelLocalStorage);
+// Cargar los datos del archivo data.json y mostrarlos en los contenedores correspondientes
+async function cargarDatos() {
+  try {
+    const response = await fetch("data.json");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    mostrarProductos(".mates-container", data.mates);
+    mostrarProductos(".termos-container", data.termos);
+    mostrarProductos(".bombillas-container", data.bombillas);
+  } catch (error) {
+    console.error("Error al cargar los datos:", error);
+  }
+}
 
-// Muestra los productos de mates, termos y bombillas
-mostrarProductos(".mates-container", data.mates);
-mostrarProductos(".termos-container", data.termos);
-mostrarProductos(".bombillas-container", data.bombillas);
+// Cargar los datos y el carrito desde el localStorage al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+  cargarDatos();
+  cargarCarritoDesdeLocalStorage();
+});

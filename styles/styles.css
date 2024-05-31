@@ -66,7 +66,7 @@ header nav a {
   padding: 20px;
   border-radius: 5px;
   position: relative;
-    min-height: 100px;
+  min-height: 100px;
 }
 
 #vaciar-carrito-btn {
@@ -129,14 +129,18 @@ header nav a {
 }
 
 /* Estilos de los productos */
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .product {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
   margin: 10px;
   width: 200px;
-  display: inline-block;
-  vertical-align: top;
   text-align: center;
 }
 
@@ -161,9 +165,9 @@ header nav a {
 
 /* Estilos de contenedor de productos */
 .products-container,
-#mates div,
-#termos div,
-#bombillas div {
+#mates .products-container,
+#termos .products-container,
+#bombillas .products-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
