@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matecito Store</title>
+    <link rel="icon" href="assets/iconoMatecito.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script src="./app/data.js" type="module" defer></script>
+    <script src="./app/app.js" type="module" defer></script>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="logo-titulo">
+            <img src="./assets/iconoMatecito.png" alt="Ícono del mate">
+            <h1>Matecito Store</h1>
+        </div>
+        <i class="fas fa-shopping-cart cart-icon"></i>
+        <nav>
+            <a href="#mates">Mates</a>
+            <a href="#termos">Termos</a>
+            <a href="#bombillas">Bombillas</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section id="carrito" class="cart">
+        <h2>Carrito</h2>
+        <div id="carrito-items">
+            <!-- Acá se mostrarán los productos agregados al carrito -->
+        </div>
+        <div class="cart-info">
+            <button id="vaciar-carrito-btn">Vaciar Carrito</button>
+            <span class="cart-total"></span>
+        </div>
+        
+    </section>
+
+    <!-- Secciones de productos -->
+
+    <section id="mates">
+        <h2>Mates</h2>
+        <div class="products-container mates-container">
+            <!-- Acá se mostrarán los mates -->
+        </div>
+    </section>
+    <hr class="category-divider">
+
+    <section id="termos">
+        <h2>Termos</h2>
+        <div class="termos-container">
+            <!-- Acá se mostrarán los termos -->
+        </div>
+    </section>
+    <hr class="category-divider">
+
+    <section id="bombillas">
+        <h2>Bombillas</h2>
+        <div class="bombillas-container">
+            <!-- Acá se mostrarán las bombillas -->
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>Derechos Reservados &copy; 2024 - Ecommerce de Mates y Termos Argentinos</p>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap");
+
+/* Estilos generales */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header,
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Estilos del encabezado */
+header {
+  max-width: 100%;
+  margin: 0 auto;
+  height: 50px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estilos del logo y título */
+.logo-titulo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-titulo img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.logo-titulo h1 {
+  font-size: 24px;
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+/* Estilos de navegación */
+header nav {
+  margin-left: auto;
+}
+
+header nav a {
+  margin-left: 20px;
+  color: #ccc;
+  text-decoration: none;
+}
+
+/* Estilos del carrito */
+.cart {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+    min-height: 100px;
+}
+
+#vaciar-carrito-btn {
+  bottom: 10px;
+  left: 10px;
+  margin-right: 850px;
+}
+
+.cart-total {
+  bottom: 10px;
+  right: 10px;
+  font-weight: bold;
+  color: black;
+}
+
+.cart-item {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item p {
+  margin: 0;
+}
+
+.eliminar-item-btn {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.eliminar-item-btn:hover {
+  background-color: #cc0000;
+}
+
+/* Estilos para el icono de carrito */
+.cart-icon {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.info-cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cantidad {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+/* Estilos de los productos */
+.product {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 200px;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+}
+
+.product img {
+  max-width: 100%;
+  width: 150px;
+  height: 150px;
+}
+
+.product h3 {
+  margin-top: 0;
+}
+
+/* Estilos de la sección */
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  margin-bottom: 10px;
+}
+
+/* Estilos de contenedor de productos */
+.products-container,
+#mates div,
+#termos div,
+#bombillas div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* Estilos de la línea de separación de categorías */
+.category-divider {
+  width: 100%;
+  border: none;
+  border-top: 2px solid #ccc;
+  margin: 20px 0;
+}
+
+/* Estilos de botones  */
+button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #555;
+}
