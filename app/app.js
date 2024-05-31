@@ -85,9 +85,9 @@ function vaciarCarrito() {
   carritoItems.innerHTML = "";
   localStorage.removeItem("carrito");
 
-  const totalElement = document.querySelector("span");
+  const totalElement = document.querySelector(".cart-total");
   if (totalElement) {
-    totalElement.remove();
+    totalElement.textContent = '';
     localStorage.removeItem("totalAPagar");
   }
 }
@@ -97,14 +97,6 @@ function toggleCarrito() {
   const carrito = document.getElementById("carrito");
   carrito.style.display = carrito.style.display === "block" ? "none" : "block";
 }
-
-// Agrega un event listener para el evento de clic en el icono del carrito
-document.querySelector(".cart-icon").addEventListener("click", toggleCarrito);
-
-// Agrega un event listener para el evento de clic en el botón "Vaciar Carrito"
-document
-  .getElementById("vaciar-carrito-btn")
-  .addEventListener("click", vaciarCarrito);
 
 // Función para calcular el total del carrito
 function calcularTotal() {
@@ -167,6 +159,27 @@ function cargarCarritoDesdeLocalStorage() {
   mostrarTotal();
 }
 
+// Función para realizar la compra
+function realizarCompra() {
+  const carrito = obtenerCarritoDelLocalStorage();
+
+  if (carrito.length === 0) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Tu carrito está vacío. ¡Agrega algunos productos antes de comprar!",
+    });
+  } else {
+    Swal.fire({
+      icon: 'success',
+      title: 'Compra realizada',
+      text: '¡Gracias por tu compra!',
+    }).then(() => {
+      vaciarCarrito();
+    });
+  }
+}
+
 // Cargar los datos del archivo data.json y mostrarlos en los contenedores correspondientes
 async function cargarDatos() {
   try {
@@ -182,6 +195,21 @@ async function cargarDatos() {
     console.error("Error al cargar los datos:", error);
   }
 }
+
+// Cuando se haga click en el botón "Realizar Compra"
+document
+  .getElementById("comprar-btn")
+  .addEventListener("click", realizarCompra);
+
+// Cuando se haga click en el icono del carrito...
+document
+  .querySelector(".cart-icon")
+  .addEventListener("click", toggleCarrito);
+
+// Cuando se haga click en el botón "Vaciar Carrito"
+document
+  .getElementById("vaciar-carrito-btn")
+  .addEventListener("click", vaciarCarrito);
 
 // Cargar los datos y el carrito desde el localStorage al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
